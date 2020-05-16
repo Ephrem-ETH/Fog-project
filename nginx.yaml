@@ -20,12 +20,21 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
-        - mountPath: "/var/www/html"
+        - mountPath: "/usr/share/nginx/html"
           name: nginx-volume
+        - mountPath: /etc/nginx/conf.d/ # mount nginx-conf volumn to /etc/nginx
+          readOnly: true
+          name: conf
       volumes:
       - name: nginx-volume
-      persistentVolumeClaim:
-        claimName: nginx-claim 
+        persistentVolumeClaim:
+          claimName: nginx-claim
+      - name: conf
+        configMap:
+          name: nginx-conf # place ConfigMap `nginx-conf` on /etc/nginx
+          items:
+            - key: site.conf
+              path: site.conf
 ---
 apiVersion: v1
 kind: Service
