@@ -24,8 +24,8 @@ spec:
           name: nginx-volume
       volumes:
       - name: nginx-volume
-      persistentVolumeClaim:
-        claimName: nginx-claim 
+        persistentVolumeClaim:
+          claimName: nginx-claim 
 ---
 apiVersion: v1
 kind: Service
