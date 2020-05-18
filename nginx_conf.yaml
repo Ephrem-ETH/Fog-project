@@ -12,7 +12,7 @@ data:
 
     location / {
         root   /usr/share/nginx/html;
-        index  index.html index.htm;
+        index  index.html index.htm index.php;
     }
 
     #error_page  404              /404.html;
@@ -34,7 +34,7 @@ data:
     #
     location ~ [^/]\.php(/|$) {
         root           html;
-        fastcgi_pass   10.107.248.19:9000;
+        fastcgi_pass   {{php_svc}}:9000;
         fastcgi_index  index.php;
         fastcgi_param  SCRIPT_FILENAME  /var/www/html$fastcgi_script_name;
         include        fastcgi_params;

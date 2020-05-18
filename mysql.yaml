@@ -42,21 +42,6 @@ spec:
               path: conf.d/mysql.cnf
             - key: docker.cnf
               path: conf.d/docker.cnf
-    
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mysql8-service
-  labels:
-    app: mysql8
-spec:
-  type: NodePort
-  ports:
-  - port: 3306
-    protocol: TCP
-  selector:
-    app: mysql8
 ---
 apiVersion: v1
 kind: Service
@@ -69,3 +54,4 @@ spec:
     - protocol: TCP
       port: 3306
       targetPort: 3306
+  clusterIP: 10.105.44.55
