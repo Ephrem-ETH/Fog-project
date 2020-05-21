@@ -26,11 +26,23 @@ spec:
          volumeMounts: 
          - mountPath: "/var/lib/mysql"
            name: mysql-local-storage
+         - mountPath: "/etc/mysql/"
+           readOnly: true
+           name: conf
        volumes:
        - name: mysql-local-storage
          persistentVolumeClaim:
            claimName: mysql-pv-claim
-         
+       - name: conf     
+         configMap:
+          name: mysql-conf
+          items:
+            - key: my.cnf
+              path: my.cnf
+            - key: mysql.cnf
+              path: conf.d/mysql.cnf
+            - key: docker.cnf
+              path: conf.d/docker.cnf
 ---
 apiVersion: v1
 kind: Service
