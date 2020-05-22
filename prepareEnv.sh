@@ -1,6 +1,8 @@
 #!/bin/sh
-kubectl apply -f pv.yaml
-kubectl apply -f pvc.yaml
+kubectl apply -f pv_web.yaml
+kubectl apply -f pvc_web.yaml
+kubectl apply -f pv_mysql.yaml
+kubectl apply -f pvc_mysql.yaml
 kubectl apply -f php_conf.yaml
 kubectl apply -f php.yaml
 php_svc=`kubectl get svc | awk '/php-service/ {print $3}'`
