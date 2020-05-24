@@ -27,7 +27,7 @@ spec:
         lifecycle:
           postStart:
             exec:
-              command: ["/bin/sh", "-c", cp -r /config/. /usr/local/etc/php-fpm.d/ && apt-get update && docker-php-ext-install mysqli && kill -USR2 1]
+              command: ["/bin/sh", "-c", cp -r /config/. /usr/local/etc/php-fpm.d/ && apt-get update && docker-php-ext-install mysqli && apt-get -y install libzip-dev && docker-php-ext-install zip  && apt-get -y install libpng-dev && docker-php-ext-install gd && docker-php-ext-install pdo_mysql && kill -USR2 1]
       volumes:
       - name: nginx-volume
         persistentVolumeClaim:

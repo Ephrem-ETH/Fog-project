@@ -1,0 +1,4 @@
+#!/bin/sh
+dep=$1
+n=$2
+kubectl scale deployment $dep-deployment --replicas=$n
