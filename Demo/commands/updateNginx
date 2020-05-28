@@ -1,0 +1,1 @@
+kubectl --record deployment.apps/nginx-deployment set image deployment.apps/nginx-deployment nginx=nginx:1.16.0

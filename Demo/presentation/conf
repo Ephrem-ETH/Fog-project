@@ -1,0 +1,2 @@
+#!/bin/sh
+cat ~/project/Environment/mysql/mysql_conf.yaml
