@@ -1,13 +1,12 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
  name: mysql
 spec:
+  serviceName: mysql-service
   selector:
     matchLabels:
       app: mysql8
-  strategy:
-     type: Recreate
   template:
     metadata:
       labels:

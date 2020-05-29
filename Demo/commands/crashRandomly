@@ -1,3 +1,0 @@
-#!/bin/sh
-pods=`kubectl get pods | awk '/nginx/ {print $1}'`
-echo "${#pods[@]}"
